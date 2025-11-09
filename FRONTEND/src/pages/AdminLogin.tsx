@@ -7,28 +7,42 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowLeft, Lock, User } from "lucide-react";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Mock authentication - replace with actual backend integration
-    setTimeout(() => {
-      if (username === "admin" && password === "admin123") {
+    try {
+      const response = await fetch('http://localhost:5001/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        login(data.token);
         toast.success("Login successful!");
-        // Navigate to admin dashboard (to be created)
-        navigate("/");
+        navigate("/admin/dashboard");
       } else {
         toast.error("Invalid credentials. Please try again.");
       }
+    } catch (error) {
+      toast.error("Network error. Please try again.");
+      console.error('Login error:', error);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -47,9 +61,9 @@ export default function AdminLogin() {
         <Card className="shadow-lg border-border">
           <CardHeader className="space-y-4 text-center">
             <div className="flex justify-center">
-              <img src={logo} alt="DATARENA Logo" className="h-20 w-20" />
+              <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Official_logo_of_VNRVJIET.png" alt="VNRVJIET Logo" className="h-20 w-20 object-contain" />
             </div>
-            <CardTitle className="text-3xl font-bold text-primary">
+            <CardTitle className="text-3xl font-bold text-yellow-500 font-mono">
               Admin Login
             </CardTitle>
             <CardDescription>
@@ -99,15 +113,7 @@ export default function AdminLogin() {
               </Button>
             </form>
 
-            <div className="mt-6 p-4 bg-muted rounded-lg">
-              <p className="text-sm text-muted-foreground text-center">
-                <strong>Demo Credentials:</strong>
-                <br />
-                Username: <code className="bg-background px-2 py-1 rounded">admin</code>
-                <br />
-                Password: <code className="bg-background px-2 py-1 rounded">admin123</code>
-              </p>
-            </div>
+
           </CardContent>
         </Card>
       </div>

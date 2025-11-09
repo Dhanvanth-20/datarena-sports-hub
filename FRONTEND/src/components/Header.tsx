@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import logo from "@/assets/logo.png";
 
 const sports = [
   { value: "cricket", label: "Cricket" },
@@ -30,16 +29,16 @@ export const Header = () => {
 
   return (
     <header className="bg-card shadow-md border-b border-border">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           {/* Left: Logo */}
           <div className="flex items-center gap-3">
-            <img src={logo} alt="College Logo" className="h-14 w-14 object-contain" />
+            <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Official_logo_of_VNRVJIET.png" alt="VNRVJIET Logo" className="h-14 w-14 object-contain" />
           </div>
 
           {/* Center: DATARENA Title + Sport Selector */}
           <div className="flex items-center gap-4 flex-1 justify-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-primary tracking-tight">
+            <h1 className="text-2xl md:text-3xl font-bold text-primary tracking-tight font-mono">
               DATARENA
             </h1>
             <Select value={selectedSport} onValueChange={handleSportChange}>
@@ -48,8 +47,8 @@ export const Header = () => {
               </SelectTrigger>
               <SelectContent className="bg-card border-border z-50">
                 {sports.map((sport) => (
-                  <SelectItem 
-                    key={sport.value} 
+                  <SelectItem
+                    key={sport.value}
                     value={sport.value}
                     className="hover:bg-secondary cursor-pointer"
                   >
@@ -58,7 +57,6 @@ export const Header = () => {
                 ))}
               </SelectContent>
             </Select>
-            <img src={logo} alt="College Logo" className="h-12 w-12 object-contain hidden md:block" />
           </div>
 
           {/* Right: Admin Login */}
