@@ -45,8 +45,8 @@ const Index = () => {
           <div className="border-t border-primary-foreground/20 pt-4">
             <h3 className="text-lg font-semibold mb-2">Sports Incharge</h3>
             <p className="text-sm">
-              <strong>Director of Sports:</strong> Dr. Rajesh Kumar<br />
-              <strong>Contact:</strong> sports@college.edu | +91-9876543210
+              <strong>Director of Sports:</strong> Dr. Sreerama<br />
+              <strong>Contact:</strong> sports@vnrvjiet.in | 9440121314
             </p>
           </div>
         </div>

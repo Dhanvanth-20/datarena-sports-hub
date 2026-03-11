@@ -4,15 +4,15 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 3045;
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:8080', 'http://localhost:8081', 'http://localhost:8082', 'http://localhost:8083', 'http://localhost:5173'], // Allow requests from common frontend ports
+    origin: ['http://localhost:8045', 'http://localhost:8081', 'http://localhost:8082', 'http://localhost:8083', 'http://localhost:5173'], // Allow requests from common frontend ports
     credentials: true
 }));
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', req.headers.origin || 'http://localhost:8083');
+    res.header('Access-Control-Allow-Origin', req.headers.origin || 'http://localhost:8045');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     if (req.method === 'OPTIONS') {

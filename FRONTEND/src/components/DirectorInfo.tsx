@@ -9,7 +9,7 @@ export const DirectorInfo = () => {
             <Award className="h-6 w-6 text-accent" />
             <div>
               <p className="text-sm font-medium opacity-90">Physical Director</p>
-              <p className="font-bold text-lg">Dr. Rajesh Kumar</p>
+              <p className="font-bold text-lg">Dr. Sreerama</p>
             </div>
           </div>
           
@@ -17,7 +17,7 @@ export const DirectorInfo = () => {
             <Phone className="h-6 w-6 text-accent" />
             <div>
               <p className="text-sm font-medium opacity-90">Contact</p>
-              <p className="font-bold text-lg">+91 98765 43210</p>
+              <p className="font-bold text-lg">9440121314</p>
             </div>
           </div>
           
@@ -25,7 +25,7 @@ export const DirectorInfo = () => {
             <Mail className="h-6 w-6 text-accent" />
             <div>
               <p className="text-sm font-medium opacity-90">Email</p>
-              <p className="font-bold text-lg">sports@college.edu</p>
+              <p className="font-bold text-lg">sports@vnrvjiet.in</p>
             </div>
           </div>
         </div>
